@@ -7,7 +7,7 @@ class SongContainer extends Component {
     super(props);
     this.state = {
       songList: [],
-      selectedSong: ""
+      selectedSongID: ""
     };
 
     this.handleSongSelect = this.handleSongSelect.bind(this);
@@ -27,12 +27,18 @@ class SongContainer extends Component {
   }
 
   render(){
+    const selectedSong = this.state.songList.find(song => {
+      return song.id.attributes['im:id'] === this.state.selectedSongID
+    })
+    console.log(selectedSong);
+
+
     return (
       <Fragment>
         <h1>Top 20 UK Hits!</h1>
         <SongList songs={this.state.songList} onSongSelect={this.handleSongSelect}/>
         <h2>Song Detail</h2>
-        <SongDetail song={this.state.selectedSong}/>
+        <SongDetail song={selectedSong}/>
       </Fragment>
     )
   }

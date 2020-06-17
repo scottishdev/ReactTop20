@@ -4,7 +4,9 @@ const SongDetail = (props) => {
   if(!props.song) return null;
   return (
     <Fragment>
-      <h3>Name: {props.song.title.label}</h3>
+      <h3>{props.song['im:name'].label}</h3>
+      <p>Artist: {props.song['im:artist'].label}</p>
+      <img src={props.song['im:image'][1].label} alt=""/>
 
     </Fragment>
   )
